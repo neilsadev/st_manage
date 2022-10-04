@@ -1,11 +1,13 @@
 from rest_framework import serializers
-from .models import Institute
+from .models import Department, Institute
 
-# class Bser(sre):
-#     S
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Department
+        fields = ['id', 'name', 'degree']
 
 class InstituteSerializer(serializers.ModelSerializer):
-    # b=Bser()
+    departments = DepartmentSerializer(many = True,  required=False)
     class Meta:
         model = Institute
-        fields = ['id', 'name', 'uuid', 'year', 'address', 'created_at', 'updated_at']
+        fields = ['id', 'name', 'uuid', 'year', 'address', 'departments', 'created_at', 'updated_at']
