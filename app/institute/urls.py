@@ -10,5 +10,7 @@ urlpatterns = [
     path('<int:id>', views.institute_detail),
     path('<uuid:id>', views.institute_detail_by_uid),
     path('dep/', views.department_list),
-    path('dep/<uuid:id>', views.attatch_department_to_institute)
+    path('dep/<uuid:id>', views.attatch_department_to_institute),
+    path('dep/find/<uuid:id>', views.get_departments_by_institute),
+    path('dep/<int:id>', views.department_actions)
 ]
