@@ -1,6 +1,6 @@
 import uuid
 from django.db import models
-from institute.models import *
+from institute.models import Department
 
 class Student(models.Model):
     first_name = models.CharField(max_length = 200)

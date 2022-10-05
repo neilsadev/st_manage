@@ -19,7 +19,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('institute.urls'))
+    path('api/', include('institute.urls')),
+    path('api/student/', include('student.urls'))
 ]
 
 # .json support for responses
