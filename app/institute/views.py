@@ -8,7 +8,8 @@ from rest_framework.parsers import JSONParser
 from .models import Institute, Department
 from .serializers import InstituteSerializer, DepartmentSerializer
 
-#Create and Read From API
+
+#Create and Read Institutes
 @api_view(['GET', 'POST'])
 def institute_list(request, format=None):
 
@@ -31,7 +32,8 @@ def institute_list(request, format=None):
         return JsonResponse(serializer.errors,
                             status=400)
 
-#Read, Update and Delete by ID
+
+#Read, Update and Delete Institues by ID
 @api_view(['GET', 'PUT', 'DELETE'])
 def institute_detail(request, id, format=None):
     
@@ -56,7 +58,8 @@ def institute_detail(request, id, format=None):
         institute.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-#Read, Update and Delete by uuid
+
+#Read, Update and Delete Institues by uuid
 @api_view(['GET', 'PUT', 'DELETE'])
 def institute_detail_by_uid(request, id, format=None):
     #fetch data
@@ -81,7 +84,7 @@ def institute_detail_by_uid(request, id, format=None):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-#Create and Read Departments From API
+#Get All Departments
 @api_view(['GET',])
 def department_list(request, format=None):
 
@@ -91,7 +94,7 @@ def department_list(request, format=None):
         return Response({"departments": serializer.data}, status=status.HTTP_200_OK)
 
 
-#Attatch department with institute with uid From API
+#Attatch department with institute with uid
 @api_view(['POST',])
 def attatch_department_to_institute(request, id, format=None):
     #fetch data
@@ -115,6 +118,8 @@ def attatch_department_to_institute(request, id, format=None):
         return JsonResponse(serializer.errors,
                             status=400)
 
+
+#get all departments in a institute
 @api_view(['GET',])
 def get_departments_by_institute(request, id, format=None):
     #fetch data
@@ -134,7 +139,8 @@ def get_departments_by_institute(request, id, format=None):
         #reutn resposne
         return Response({"institute": queryInstitute.name, "uuid": queryInstitute.uuid, "departments": serializer.data}, status=status.HTTP_200_OK)
 
-#Read, Update and Delete by uuid
+
+#Update and Delete departmetns
 @api_view(['PUT', 'DELETE',])
 def department_actions(request, id, format=None):
     #fetch data
